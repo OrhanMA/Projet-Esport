@@ -1,0 +1,11 @@
+START TRANSACTION;
+
+CREATE DATABASE IF NOT EXISTS competition;
+
+USE competition; 
+
+CREATE TABLE IF NOT EXISTS competition (
+);
+
+
+COMMIT;
