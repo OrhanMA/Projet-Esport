@@ -14,9 +14,13 @@
 <?php
 
 require './PHP/ManagerGame.php';
+require './PHP/ManagerTeam.php';
 
 $managerGame = new ManagerGame();
 $allGames = $managerGame->getAll();
+
+$managerTeam = new ManagerTeam();
+$allTeams = $managerTeam->getAll();
 ?>
 
 <body>
@@ -46,18 +50,27 @@ $allGames = $managerGame->getAll();
     </div>
     <button>Add</button>
   </form>
-  <div class="glass">
-    <?php
-    // var_dump($allGames);
-    ?>
-    <ul>
+  <table class="table">
+    <thead id="top-tr">
+      <tr>
+        <th>Name</th>
+        <th>Station</th>
+        <th>Format</th>
+      </tr>
+    </thead>
+    <tbody>
       <?php
       foreach ($allGames as $game) {
-        echo ('<li>' . $game->getName() . ' station: ' . $game->getStation() . ' format: ' . $game->getFormat() . '</li>');
+        echo ('<tr>');
+        echo ('<td>' . $game->getName() . '</td>');
+        echo ('<td>' . $game->getStation() . '</td>');
+        echo ('<td>' . $game->getFormat() . '</td>');
+        echo ('</tr>');
       }
       ?>
-    </ul>
-  </div>
+
+    </tbody>
+  </table>
 </body>
 
 </html>
