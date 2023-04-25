@@ -15,12 +15,24 @@
 
 require './PHP/ManagerGame.php';
 require './PHP/ManagerTeam.php';
+require './PHP/ManagerPlayer.php';
+require './PHP/ManagerSponsor.php';
+require './PHP/ManagerCompetition.php';
 
 $managerGame = new ManagerGame();
 $allGames = $managerGame->getAll();
 
 $managerTeam = new ManagerTeam();
 $allTeams = $managerTeam->getAll();
+
+$managerTeam = new ManagerPlayer();
+$allPlayers = $managerPlayer->getAll();
+
+$managerSponsor = new ManagerSponsor();
+$allSponsors = $managerSponsor->getAll();
+
+$managerCompetition = new ManagerCompetition();
+$allCompetitions = $managerCompetition->getAll();
 ?>
 
 <body>
