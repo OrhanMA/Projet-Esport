@@ -52,7 +52,8 @@ nav > div > button {
   font-weight: 500;
 }
 
-form {
+form,
+.glass {
   backdrop-filter: blur(8px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(17, 25, 40, 0.388);
@@ -65,13 +66,15 @@ form {
   justify-content: center;
   align-items: center;
 }
-form > div {
+form > div,
+.glass {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-form > div > {
+form > div >,
+.glass {
   display: flex;
   flex-direction: column;
   justify-content: center;

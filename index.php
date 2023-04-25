@@ -1,8 +1,6 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +9,16 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
+
+
+<?php
+
+require './PHP/ManagerGame.php';
+
+$managerGame = new ManagerGame();
+$allGames = $managerGame->getAll();
+?>
+
 <body>
   <nav>
     <div>
@@ -38,5 +46,18 @@
     </div>
     <button>Add</button>
   </form>
+  <div class="glass">
+    <?php
+    // var_dump($allGames);
+    ?>
+    <ul>
+      <?php
+      foreach ($allGames as $game) {
+        echo ('<li>' . $game->getName() . ' station: ' . $game->getStation() . ' format: ' . $game->getFormat() . '</li>');
+      }
+      ?>
+    </ul>
+  </div>
 </body>
+
 </html>
