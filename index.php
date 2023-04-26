@@ -25,7 +25,7 @@ $allGames = $managerGame->getAll();
 $managerTeam = new ManagerTeam();
 $allTeams = $managerTeam->getAll();
 
-$managerTeam = new ManagerPlayer();
+$managerPlayer = new ManagerPlayer();
 $allPlayers = $managerPlayer->getAll();
 
 $managerSponsor = new ManagerSponsor();
@@ -33,6 +33,9 @@ $allSponsors = $managerSponsor->getAll();
 
 $managerCompetition = new ManagerCompetition();
 $allCompetitions = $managerCompetition->getAll();
+
+$managerSponsor = new ManagerSponsor();
+$allSponsors = $managerSponsor->getAll();
 ?>
 
 <body>
@@ -44,45 +47,71 @@ $allCompetitions = $managerCompetition->getAll();
       <button>Competitions</button>
     </div>
   </nav>
-  <form action="./index.php" method="post">
-    <div>
+  <div class="manager">
 
-      <div>
-        <label for="firstname">First name</label>
-        <input type="text">
-      </div>
-      <div>
-        <label for="secondname">Second name</label>
-        <input type="text">
-      </div>
-      <div>
-        <label for="city">City</label>
-        <input type="text">
-      </div>
-    </div>
-    <button>Add</button>
-  </form>
-  <table class="table">
-    <thead id="top-tr">
-      <tr>
-        <th>Name</th>
-        <th>Station</th>
-        <th>Format</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-      foreach ($allGames as $game) {
-        echo ('<tr>');
-        echo ('<td>' . $game->getName() . '</td>');
-        echo ('<td>' . $game->getStation() . '</td>');
-        echo ('<td>' . $game->getFormat() . '</td>');
-        echo ('</tr>');
-      }
-      ?>
+    <table class="table">
+      <thead id="top-tr">
+        <tr>
+          <th>Name</th>
+          <th>Station</th>
+          <th>Format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        foreach ($allGames as $game) {
+          echo ('<tr>');
+          echo ('<td>' . $game->getName() . '</td>');
+          echo ('<td>' . $game->getStation() . '</td>');
+          echo ('<td>' . $game->getFormat() . '</td>');
+          echo ('</tr>');
+        }
+        ?>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+    <form action="./index.php" method="POST">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div>
+        <label for="station">Station:</label>
+        <select name="station" id="station">
+
+          <option value="PC">PC</option>
+          <option value="Xbox One">Xbox One</option>
+          <option value="PlayStation 4">PlayStation 4 </option>
+          <option value="PlayStation 5">PlayStation 5 </option>
+          <option value="Xbox Series">Xbox Series </option>
+          <option value="Switch">Switch </option>
+        </select>
+      </div>
+      <div>
+        <label for="format">Format:</label>
+        <select name="format" id="format">
+          <option value="MOBA">MOBA</option>
+          <option value="FPS">FPS</option>
+          <option value="Battle Royale">Battle Royale</option>
+          <option value="Jeu de cartes à collectionner">Jeu de cartes à collectionner</option>
+          <option value="Sport">Sport</option>
+          <option value="FPS tactique">FPS tactique</option>
+          <option value="Combat">Combat</option>
+        </select>
+      </div>
+      <input type="submit" value="ADD">
+    </form>
+    <?php
+    if (!empty($_POST['name']) && isset($_POST['station']) && isset($_POST['format'])) {
+      $newGame = new Game();
+      $newGame->setName($_POST['name']);
+      $newGame->setStation($_POST['station']);
+      $newGame->setFormat($_POST['format']);
+      $managerGame->create($newGame);
+    }
+    ?>
+  </div>
+
 </body>
 
 </html>

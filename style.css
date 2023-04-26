@@ -110,3 +110,29 @@ tbody {
 #top-tr {
   margin-bottom: 2rem;
 }
+
+.manager {
+  display: flex;
+  justify-content: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+form > div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+form > input {
+  padding: 1rem;
+  border-radius: 10px;
+  width: 100px;
+  font-size: 20px;
+  background: none;
+  box-shadow: 0px 1px 10px 3px white;
+  border-style: none;
+  border: solid 1px white;
+  color: white;
+  font-weight: bold;
+}

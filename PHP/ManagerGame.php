@@ -20,6 +20,20 @@ class ManagerGame extends DBManager
     }
     return $gameList;
   }
+
+  public function create($game)
+  {
+    $request = 'INSERT INTO game (name, station, format) VALUE (?, ?, ?)';
+    $query = $this->getConnexion()->prepare($request);
+
+
+    $query->execute([
+      $game->getName(), $game->getStation(), $game->getFormat()
+    ]);
+    header('Refresh:0');
+  }
+
+
 }
 
 ?>
