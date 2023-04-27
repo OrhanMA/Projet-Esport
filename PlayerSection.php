@@ -23,12 +23,13 @@ $allPlayers = $managerPlayer->getAll();
 ?>
 
 <body>
-  <nav>
+<nav>
     <div>
-      <a href="./PlayerSection.php">Player</a>
-      <a href="./TeamSection.php">Team</a>
-      <a href="./index.php">Game</a>
-      <a href="./CompetitionSection.php">Competition</a>
+      <a href="./PlayerSection.php">Players</a>
+      <a href="./TeamSection.php">Teams</a>
+      <a href="./index.php">Games</a>
+      <a href="./CompetitionSection.php">Competitions</a>
+      <a href="./SponsorsSection.php">Sponsors</a>
     </div>
   </nav>
   <div class="manager">

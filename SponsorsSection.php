@@ -40,11 +40,11 @@ $allTeams = $managerTeam->getAll();
 <body>
   <nav>
     <div>
-      <a href="PlayerSection.php">Players</a>
-      <a href="TeamsSection.php">Teams</a>
-      <a href="GamesSection.php">Games</a>
-      <a href="CompetitionsSection.php">Competitions</a>
-      <a href="SponsorsSection.php">Sponsors</a>
+      <a href="./PlayerSection.php">Players</a>
+      <a href="./TeamSection.php">Teams</a>
+      <a href="./index.php">Games</a>
+      <a href="./CompetitionSection.php">Competitions</a>
+      <a href="./SponsorsSection.php">Sponsors</a>
     </div>
   </nav>
   <div class="manager">
