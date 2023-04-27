@@ -17,6 +17,12 @@ require '../Competition/ManagerCompetition.php';
 $managerCompetition = new ManagerCompetition();
 $allCompetitions = $managerCompetition->getAll();
 
+if (isset($_GET['delete'])) {
+    // var_dump(intval($_GET['delete']));
+    $managerCompetition->delete(intval($_GET['delete']));
+}
+
+
 ?>
 
 <body>
@@ -39,17 +45,23 @@ $allCompetitions = $managerCompetition->getAll();
                     <th>City</th>
                     <th>Format</th>
                     <th>Cash prize</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 foreach ($allCompetitions as $competition) {
+                    $removeUrl = '?delete=' . $competition->getId();
+                    $removeLink = '<a href="' . $removeUrl . '">Delete</a>';
+
                     echo ('<tr>');
+                    echo ('<td>' . $competition->getId() . '</td>');
                     echo ('<td>' . $competition->getName() . '</td>');
                     echo ('<td>' . $competition->getDescription() . '</td>');
                     echo ('<td>' . $competition->getCity() . '</td>');
                     echo ('<td>' . $competition->getFormat() . '</td>');
                     echo ('<td>' . $competition->getCashPrize() . '</td>');
+                    echo ('<td>' . $removeLink . '</td>');
                     echo ('</tr>');
                 }
                 ?>
@@ -89,7 +101,6 @@ $allCompetitions = $managerCompetition->getAll();
         </form>
         <?php
         if (!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['city']) && !empty($_POST['format']) && !empty($_POST['cash_prize'])) {
-            var_dump('inside');
             $newCompetition = new Competition();
             $newCompetition->setName($_POST['name']);
             $newCompetition->setDescription($_POST['description']);

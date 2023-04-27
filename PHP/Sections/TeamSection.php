@@ -17,7 +17,10 @@ require '../Team/ManagerTeam.php';
 
 $managerTeam = new ManagerTeam();
 $allTeams = $managerTeam->getAll();
-
+if (isset($_GET['delete'])) {
+    // var_dump(intval($_GET['delete']));
+    $managerTeam->delete(intval($_GET['delete']));
+}
 ?>
 
 <body>
@@ -37,14 +40,21 @@ $allTeams = $managerTeam->getAll();
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 foreach ($allTeams as $team) {
+
+                    $removeUrl = '?delete=' . $team->getId();
+                    $removeLink = '<a href="' . $removeUrl . '">Delete</a>';
+
                     echo ('<tr>');
+                    echo ('<td>' . $team->getId() . '</td>');
                     echo ('<td>' . $team->getName() . '</td>');
                     echo ('<td>' . $team->getDescription() . '</td>');
+                    echo ('<td>' . $removeLink . '</td>');
                     echo ('</tr>');
                 }
                 ?>

@@ -7,7 +7,16 @@ class Competition
   private $city;
   private $format;
   private $cash_prize;
+  private $id;
 
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setId($id)
+  {
+    return $this->id = $id;
+  }
   public function getName()
   {
     return $this->name;
