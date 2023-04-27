@@ -14,10 +14,12 @@
 <?php
 
 require './PHP/Game/ManagerGame.php';
-
 $managerGame = new ManagerGame();
 $allGames = $managerGame->getAll();
-
+if (isset($_GET['delete'])) {
+  // var_dump(intval($_GET['delete']));
+  $managerGame->delete(intval($_GET['delete']));
+}
 ?>
 
 <body>
@@ -38,15 +40,20 @@ $allGames = $managerGame->getAll();
           <th>Name</th>
           <th>Station</th>
           <th>Format</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
         <?php
         foreach ($allGames as $game) {
+
+          $removeUrl = '?delete=' . $game->getId();
+          $removeLink = '<a href="' . $removeUrl . '">Delete</a>';
           echo ('<tr>');
           echo ('<td>' . $game->getName() . '</td>');
           echo ('<td>' . $game->getStation() . '</td>');
           echo ('<td>' . $game->getFormat() . '</td>');
+          echo ('<td>' . $removeLink . '</td>');
           echo ('</tr>');
         }
         ?>
