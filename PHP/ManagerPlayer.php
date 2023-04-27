@@ -1,6 +1,6 @@
 <?php
 
-// require 'DBManager.php';
+require 'DBManager.php';
 require 'Player.php';
 
 class ManagerPlayer extends DBManager
@@ -19,6 +19,17 @@ class ManagerPlayer extends DBManager
       $playerList[] = $newPlayer;
     }
     return $playerList;
+  }
+  public function create($player)
+  {
+    $request = 'INSERT INTO player (first_name, second_name, city) VALUE (?, ?, ?)';
+    $query = $this->getConnexion()->prepare($request);
+
+
+    $query->execute([
+      $player->getFirstName(), $player->getSecondName(), $player->getCity()
+    ]);
+    header('Refresh:0');
   }
 }
 

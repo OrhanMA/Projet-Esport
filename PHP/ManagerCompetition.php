@@ -1,6 +1,6 @@
 <?php
 
-// require 'DBManager.php';
+require 'DBManager.php';
 require 'Competition.php';
 
 class ManagerCompetition extends DBManager
@@ -21,6 +21,17 @@ class ManagerCompetition extends DBManager
       $competitionList[] = $newCompetition;
     }
     return $competitionList;
+  }
+  public function create($competition)
+  {
+    $request = 'INSERT INTO competition (name, description, city, format, cash_prize ) VALUE (?, ?, ?, ?, ?)';
+    $query = $this->getConnexion()->prepare($request);
+
+
+    $query->execute([
+      $competition->getName(), $competition->getDescription(), $competition->getCity(), $competition->getFormat(), $competition->getCashPrize()
+    ]);
+    header('Refresh:0');
   }
 }
 

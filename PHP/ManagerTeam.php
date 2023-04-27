@@ -1,6 +1,6 @@
 <?php
 
-// require 'DBManager.php';
+require 'DBManager.php';
 require 'Team.php';
 
 class ManagerTeam extends DBManager
@@ -18,6 +18,17 @@ class ManagerTeam extends DBManager
       $teamList[] = $newTeam;
     }
     return $teamList;
+  }
+  public function create($team)
+  {
+    $request = 'INSERT INTO team (name, description) VALUE (?, ?)';
+    $query = $this->getConnexion()->prepare($request);
+
+
+    $query->execute([
+      $team->getName(), $team->getDescription()
+    ]);
+    header('Refresh:0');
   }
 }
 
