@@ -2,6 +2,7 @@
 
 class Game
 {
+  //comment 
   private $name;
   private $station;
   private $format;

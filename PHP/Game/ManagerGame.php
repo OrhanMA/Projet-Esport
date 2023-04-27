@@ -1,5 +1,5 @@
 <?php
-
+//comment
 require './PHP/DBManager.php';
 require 'Game.php';
 
