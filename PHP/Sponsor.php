@@ -3,16 +3,19 @@
 class Sponsor
 {
   private $brand;
+  // private $team_id;
+  private $id;
   private $team_id;
 
-  public function getBrand()
+  public function getID()
   {
-    return $this->brand;
+    return $this->id;
   }
-  public function setBrand($brand)
+  public function setID($id)
   {
-    return $this->brand = $brand;
+    return $this->id = $id;
   }
+
   public function getTeamID()
   {
     return $this->team_id;
@@ -21,7 +24,14 @@ class Sponsor
   {
     return $this->team_id = $team_id;
   }
-
+  public function getBrand()
+  {
+    return $this->brand;
+  }
+  public function setBrand($brand)
+  {
+    return $this->brand = $brand;
+  }
 }
 
 ?>
