@@ -34,36 +34,13 @@ class ManagerPlayer extends DBManager
     header('Refresh:0');
   }
 
-  // public function findById($playerId)
-  // {
-  //   $request = 'SELECT * FROM player WHERE id = ' . $playerId;
-  //   $query = $this->getConnexion()->query($request);
-  //   $foundPlayer = $query->fetch();
-
-  //   if ($foundPlayer) {
-  //     $player = new Player();
-  //     $player->setId($foundPlayer['id']);
-  //     $player->setFirstName($foundPlayer['first_name']);
-  //     $player->setSecondName($foundPlayer['second_name']);
-  //     $player->setCity($foundPlayer['city']);
-
-  //     return $player;
-  //   } else {
-  //     return null;
-  //   }
-  // }
   public function delete($playerId)
   {
-
-    // $playerToDelete = $this->findById($playerId);
-
-    // if ($playerToDelete) {
     $request = 'DELETE FROM player WHERE id = ' . $playerId;
     $query = $this->getConnexion()->prepare($request);
     $query->execute();
     header('Location:PlayerSection.php');
     exit();
-    // }
   }
 }
 

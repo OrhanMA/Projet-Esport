@@ -1,6 +1,6 @@
 <?php
 
-require '../DBManager.php';
+require_once '../DBManager.php';
 require 'Team.php';
 
 

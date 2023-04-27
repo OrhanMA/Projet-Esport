@@ -1,4 +1,5 @@
 <?php
+
 require './PHP/DBManager.php';
 require 'Game.php';
 
@@ -12,6 +13,7 @@ class ManagerGame extends DBManager
 
     foreach ($res as $game) {
       $newGame = new Game();
+      $newGame->setID($game['id']);
       $newGame->setName($game['name']);
       $newGame->setStation($game['station']);
       $newGame->setFormat($game['format']);
@@ -19,20 +21,28 @@ class ManagerGame extends DBManager
     }
     return $gameList;
   }
-
   public function create($game)
   {
-    $request = 'INSERT INTO game (name, station, format) VALUE (?, ?, ?)';
+    $request = 'INSERT INTO game (id, name, station, format) VALUE (?, ?, ?, ?)';
     $query = $this->getConnexion()->prepare($request);
 
 
     $query->execute([
+      $game->getID(),
       $game->getName(), $game->getStation(), $game->getFormat()
     ]);
     header('Refresh:0');
   }
 
-
+  public function delete($gameId)
+  { {
+      $request = 'DELETE FROM game WHERE id = ' . $gameId;
+      $query = $this->getConnexion()->prepare($request);
+      $query->execute();
+      header('Location:index.php');
+      exit();
+    }
+  }
 }
 
 ?>
