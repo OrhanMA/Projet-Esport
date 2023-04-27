@@ -1,6 +1,5 @@
 <?php
-
-require 'DBManager.php';
+require './PHP/DBManager.php';
 require 'Game.php';
 
 class ManagerGame extends DBManager

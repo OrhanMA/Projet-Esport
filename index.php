@@ -13,36 +13,21 @@
 
 <?php
 
-require './PHP/ManagerGame.php';
-// require './PHP/ManagerTeam.php';
-// require './PHP/ManagerPlayer.php';
-// require './PHP/ManagerSponsor.php';
-// require './PHP/ManagerCompetition.php';
+require './PHP/Game/ManagerGame.php';
 
 $managerGame = new ManagerGame();
 $allGames = $managerGame->getAll();
 
-// $managerTeam = new ManagerTeam();
-// $allTeams = $managerTeam->getAll();
-
-// $managerSponsor = new ManagerSponsor();
-// $allSponsors = $managerSponsor->getAll();
-
-// $managerCompetition = new ManagerCompetition();
-// $allCompetitions = $managerCompetition->getAll();
-
-// $managerSponsor = new ManagerSponsor();
-// $allSponsors = $managerSponsor->getAll();
 ?>
 
 <body>
   <nav>
     <div>
-      <a href="./PlayerSection.php">Players</a>
-      <a href="./TeamSection.php">Teams</a>
+      <a href="./PHP/Sections/PlayerSection.php">Players</a>
+      <a href="./PHP/Sections/TeamSection.php">Teams</a>
       <a href="./index.php">Games</a>
-      <a href="./CompetitionSection.php">Competitions</a>
-      <a href="./SponsorsSection.php">Sponsors</a>
+      <a href="./PHP/Sections/CompetitionSection.php">Competitions</a>
+      <a href="./PHP/Sections/SponsorsSection.php">Sponsors</a>
     </div>
   </nav>
   <div class="manager">

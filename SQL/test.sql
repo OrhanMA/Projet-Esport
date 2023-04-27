@@ -37,6 +37,23 @@ CREATE TABLE IF NOT EXISTS player (
   REFERENCES team(id)
 );
 
+CREATE TABLE IF NOT EXISTS team_competition (
+    team_id int(10),
+    competition_id int(10),
+    PRIMARY KEY (team_id, competition_id),
+    CONSTRAINT fk_team_id_competition
+    FOREIGN KEY (team_id)
+    REFERENCES team(id),
+    CONSTRAINT fk_competition_id_team
+    FOREIGN KEY (competition_id)
+    REFERENCES competition(id)
+);
+
+INSERT INTO team_competition (team_id, competition_id) VALUES
+(1, 2),
+(2, 3),
+(3, 1);
+
 
 CREATE TABLE IF NOT EXISTS sponsor (
   id int(10) NOT NULL AUTO_INCREMENT,

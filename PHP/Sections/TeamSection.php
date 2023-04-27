@@ -6,33 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Esport</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
     <script src="script.js"></script>
 </head>
 
 
 <?php
 
-// require './PHP/ManagerGame.php';
-require './PHP/ManagerTeam.php';
-// require './PHP/ManagerPlayer.php';
-// require './PHP/ManagerSponsor.php';
-// require './PHP/ManagerCompetition.php';
-
-// $managerGame = new ManagerGame();
-// $allGames = $managerGame->getAll();
+require '../Team/ManagerTeam.php';
 
 $managerTeam = new ManagerTeam();
 $allTeams = $managerTeam->getAll();
 
-// $managerSponsor = new ManagerSponsor();
-// $allSponsors = $managerSponsor->getAll();
-
-// $managerCompetition = new ManagerCompetition();
-// $allCompetitions = $managerCompetition->getAll();
-
-// $managerSponsor = new ManagerSponsor();
-// $allSponsors = $managerSponsor->getAll();
 ?>
 
 <body>
@@ -40,7 +25,7 @@ $allTeams = $managerTeam->getAll();
         <div>
             <a href="./PlayerSection.php">Players</a>
             <a href="./TeamSection.php">Teams</a>
-            <a href="./index.php">Games</a>
+            <a href="../../index.php">Games</a>
             <a href="./CompetitionSection.php">Competitions</a>
             <a href="./SponsorsSection.php">Sponsors</a>
         </div>

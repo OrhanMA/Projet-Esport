@@ -5,7 +5,16 @@ class Player
   private $first_name;
   private $second_name;
   private $city;
+  private $id;
 
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setId($id)
+  {
+    return $this->id = $id;
+  }
   public function getFirstName()
   {
     return $this->first_name;

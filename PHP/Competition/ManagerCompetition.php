@@ -1,6 +1,6 @@
 <?php
 
-require 'DBManager.php';
+require '../DBManager.php';
 require 'Competition.php';
 
 class ManagerCompetition extends DBManager

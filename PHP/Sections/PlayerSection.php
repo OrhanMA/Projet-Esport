@@ -6,28 +6,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projet Esport</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../style.css">
   <script src="script.js"></script>
 </head>
 
 
 <?php
 
-require './PHP/ManagerPlayer.php';
-
-
+require '../Player/ManagerPlayer.php';
 $managerPlayer = new ManagerPlayer();
 $allPlayers = $managerPlayer->getAll();
-
+if (isset($_GET['delete'])) {
+  // var_dump(intval($_GET['delete']));
+  $managerPlayer->delete(intval($_GET['delete']));
+}
 
 ?>
 
 <body>
-<nav>
+  <nav>
     <div>
       <a href="./PlayerSection.php">Players</a>
       <a href="./TeamSection.php">Teams</a>
-      <a href="./index.php">Games</a>
+      <a href="../../index.php">Games</a>
       <a href="./CompetitionSection.php">Competitions</a>
       <a href="./SponsorsSection.php">Sponsors</a>
     </div>
@@ -37,18 +38,28 @@ $allPlayers = $managerPlayer->getAll();
     <table class="table">
       <thead id="top-tr">
         <tr>
+          <th>ID</th>
           <th>First name</th>
           <th>Second name</th>
           <th>City</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
         <?php
         foreach ($allPlayers as $player) {
+
+          $removeUrl = '?delete=' . $player->getId();
+          $removeLink = '<a href="' . $removeUrl . '">Delete</a>';
+
+          // $editUrl = './playerEdit.php?edit=' . $player->getId();
+          // $editLink = '<a href="' . $editUrl . '">' . 'Edit' . '</a>';
           echo ('<tr>');
+          echo ('<td>' . $player->getId() . '</td>');
           echo ('<td>' . $player->getFirstName() . '</td>');
           echo ('<td>' . $player->getSecondName() . '</td>');
           echo ('<td>' . $player->getCity() . '</td>');
+          echo ('<td>' . $removeLink . '</td>');
           echo ('</tr>');
         }
         ?>

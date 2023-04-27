@@ -1,6 +1,6 @@
 <?php
 
-require_once 'DBManager.php';
+require_once '../DBManager.php';
 require 'Sponsor.php';
 
 class ManagerSponsor extends DBManager
