@@ -41,7 +41,7 @@ div {
   font-size: 1.5rem;
 }
 
-nav > div > button {
+nav > div > a {
   padding: 10px;
   background: none;
   color: white;
