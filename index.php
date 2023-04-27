@@ -14,37 +14,34 @@
 <?php
 
 require './PHP/ManagerGame.php';
-require './PHP/ManagerTeam.php';
-require './PHP/ManagerPlayer.php';
-require './PHP/ManagerSponsor.php';
-require './PHP/ManagerCompetition.php';
+// require './PHP/ManagerTeam.php';
+// require './PHP/ManagerPlayer.php';
+// require './PHP/ManagerSponsor.php';
+// require './PHP/ManagerCompetition.php';
 
 $managerGame = new ManagerGame();
 $allGames = $managerGame->getAll();
 
-$managerTeam = new ManagerTeam();
-$allTeams = $managerTeam->getAll();
+// $managerTeam = new ManagerTeam();
+// $allTeams = $managerTeam->getAll();
 
-$managerPlayer = new ManagerPlayer();
-$allPlayers = $managerPlayer->getAll();
+// $managerSponsor = new ManagerSponsor();
+// $allSponsors = $managerSponsor->getAll();
 
-$managerSponsor = new ManagerSponsor();
-$allSponsors = $managerSponsor->getAll();
+// $managerCompetition = new ManagerCompetition();
+// $allCompetitions = $managerCompetition->getAll();
 
-$managerCompetition = new ManagerCompetition();
-$allCompetitions = $managerCompetition->getAll();
-
-$managerSponsor = new ManagerSponsor();
-$allSponsors = $managerSponsor->getAll();
+// $managerSponsor = new ManagerSponsor();
+// $allSponsors = $managerSponsor->getAll();
 ?>
 
 <body>
   <nav>
     <div>
-      <button>Players</button>
-      <button>Teams</button>
-      <button>Games</button>
-      <button>Competitions</button>
+      <a href="./PlayerSection.php">Player</a>
+      <a href="./TeamSection.php">Team</a>
+      <a href="./index.php">Game</a>
+      <a href="./CompetitionSection.php">Competition</a>
     </div>
   </nav>
   <div class="manager">
