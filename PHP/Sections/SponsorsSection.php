@@ -61,7 +61,7 @@ if (isset($_GET['delete'])) {
           $removeLink = '<a href="' . $removeUrl . '">Delete</a>';
 
           // $editUrl = '?edit=' . $sponsor->getID();
-          // $removeLink = '<a href="' . $editUrl . '">Edit</a>';
+          // $removeEditLink = '<a href="' . $editUrl . '">Edit</a>';
         
           echo ('<tr>');
           echo ('<td>' . $sponsor->getID() . '</td>');
@@ -75,20 +75,52 @@ if (isset($_GET['delete'])) {
 
       </tbody>
     </table>
-    <form action="./SponsorsSection.php" method="POST">
-      <div>
-        <label for="brand">Brand:</label>
-        <input type="text" name="brand" id="brand">
-      </div>
-      <select name="team" id="team">
-        <?php
-        foreach ($allTeams as $team) {
-          echo ('<option value="' . $team->getID() . '">' . $team->getName() . '</option>');
-        }
-        ?>
-      </select>
-      <input type="submit" value="ADD">
-    </form>
+    <div class="modif">
+
+      <form action="./SponsorsSection.php" method="POST">
+        <div>
+          <label for="brand">Brand:</label>
+          <input type="text" name="brand" id="brand">
+        </div>
+        <select name="team" id="team">
+          <?php
+          foreach ($allTeams as $team) {
+            echo ('<option value="' . $team->getID() . '">' . $team->getName() . '</option>');
+          }
+          ?>
+        </select>
+        <input type="submit" value="ADD">
+      </form>
+
+      <form action="./SponsorsSection.php" method="post">
+        <div>
+          <label for="newid">ID</label>
+          <select name="newid" id="newid">
+            <?php
+            foreach ($allSponsors as $sponsor) {
+              echo ('<option value="' . $sponsor->getID() . '">' . $sponsor->getBrand() . '</option>');
+            }
+            ?>
+          </select>
+        </div>
+        <div>
+          <label for="newbrand">New brand</label>
+          <input type="text" name="newbrand" id="newbrand">
+        </div>
+        <div>
+          <label for="newteam">Team</label>
+          <select name="newteam" id="newteam">
+            <?php
+            foreach ($allTeams as $team) {
+              echo ('<option value="' . $team->getID() . '">' . $team->getName() . '</option>');
+            }
+            ?>
+          </select>
+        </div>
+        <input type="submit" value="EDIT">
+      </form>
+
+    </div>
   </div>
   <?php
   if (!empty($_POST['brand'])) {
@@ -97,6 +129,10 @@ if (isset($_GET['delete'])) {
     $newSponsor->setTeamID($_POST['team']);
     $managerSponsor->create($newSponsor);
   }
+  if (!empty($_POST['newbrand'])) {
+    $managerSponsor->edit(intval($_POST['newid']), $_POST['newbrand'], intval($_POST['newteam']));
+  }
+
   ?>
 
 </body>
