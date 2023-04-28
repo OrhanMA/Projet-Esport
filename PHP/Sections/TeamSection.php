@@ -61,23 +61,50 @@ if (isset($_GET['delete'])) {
 
             </tbody>
         </table>
-        <form action="./TeamSection.php" method="POST">
-            <div>
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name">
-            </div>
-            <div>
-                <label for="description">description:</label>
-                <input type="text" name="description" id="description">
-            </div>
-            <input type="submit" value="ADD">
-        </form>
+        <div>
+
+            <form action="./TeamSection.php" method="POST">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="description">description:</label>
+                    <input type="text" name="description" id="description">
+                </div>
+                <input type="submit" value="ADD">
+            </form>
+            <form action="./TeamSection.php" method="post">
+                <div>
+                    <label for="newid">Team to modify</label>
+                    <select name="newid" id="newid">
+                        <?php
+                        foreach ($allTeams as $team) {
+                            echo ('<option value="' . $team->getID() . '">' . $team->getName() . '</option>');
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="newname">new Name:</label>
+                    <input type="text" name="newname" id="newname">
+                </div>
+                <div>
+                    <label for="newdescription">new Description:</label>
+                    <input type="text" name="newdescription" id="newdescription">
+                </div>
+                <input type="submit" value="EDIT">
+            </form>
+        </div>
         <?php
         if (!empty($_POST['name']) && !empty($_POST['description'])) {
             $newTeam = new Team();
             $newTeam->setName($_POST['name']);
             $newTeam->setDescription($_POST['description']);
             $managerTeam->create($newTeam);
+        }
+        if (!empty($_POST['newname'])) {
+            $managerTeam->edit(intval($_POST['newid']), $_POST['newname'], $_POST['newdescription']);
         }
         ?>
     </div>

@@ -44,6 +44,14 @@ class ManagerCompetition extends DBManager
     exit();
 
   }
+  public function edit($competitionID, $competitionName, $competitionDescription, $competitionCity, $competitionFormat, $competitionCashPrize)
+  {
+    $request = 'UPDATE `competition` SET `name` = ? , `description` = ? , `city` = ? , `format` = ? , `cash_prize` = ? WHERE id = ' . $competitionID;
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([$competitionName, $competitionDescription, $competitionCity, $competitionFormat, $competitionCashPrize]);
+    header('Location:CompetitionSection.php');
+    exit();
+  }
 }
 
 

@@ -66,21 +66,50 @@ if (isset($_GET['delete'])) {
 
       </tbody>
     </table>
-    <form action="./PlayerSection.php" method="POST">
-      <div>
-        <label for="first_name">First name:</label>
-        <input type="text" name="first_name" id="first_name">
-      </div>
-      <div>
-        <label for="second_name">Second name:</label>
-        <input type="text" name="second_name" id="second_name">
-      </div>
-      <div>
-        <label for="city">City:</label>
-        <input type="text" name="city" id="city">
-      </div>
-      <input type="submit" value="ADD">
-    </form>
+    <div>
+      <form action="./PlayerSection.php" method="POST">
+        <h4>INSERT FORM</h4>
+        <div>
+          <label for="first_name">First name:</label>
+          <input type="text" name="first_name" id="first_name">
+        </div>
+        <div>
+          <label for="second_name">Second name:</label>
+          <input type="text" name="second_name" id="second_name">
+        </div>
+        <div>
+          <label for="city">City:</label>
+          <input type="text" name="city" id="city">
+        </div>
+        <input type="submit" value="ADD">
+      </form>
+      <form action="./PlayerSection.php" method="POST">
+        <h4>EDIT FORM</h4>
+        <div>
+          <label for="newID">ID</label>
+          <select name="newID" id="newID">
+            <?php
+            foreach ($allPlayers as $player) {
+              echo ('<option value="' . $player->getId() . '">' . $player->getFirstName() . '</option>');
+            }
+            ?>
+          </select>
+        </div>
+        <div>
+          <label for="newFirstName">new First name:</label>
+          <input type="text" name="newFirstName" id="newFirstName">
+        </div>
+        <div>
+          <label for="newSecondName">new Second name:</label>
+          <input type="text" name="newSecondName" id="newSecondName">
+        </div>
+        <div>
+          <label for="newCity">new City:</label>
+          <input type="text" name="newCity" id="newCity">
+        </div>
+        <input type="submit" value="EDIT">
+      </form>
+    </div>
     <?php
 
     if (!empty($_POST['first_name']) && !empty($_POST['second_name']) && !empty($_POST['city'])) {
@@ -89,6 +118,9 @@ if (isset($_GET['delete'])) {
       $newPlayer->setSecondName($_POST['second_name']);
       $newPlayer->setCity($_POST['city']);
       $managerPlayer->create($newPlayer);
+    }
+    if (!empty($_POST['newFirstName'])) {
+      $managerPlayer->edit(intval($_POST['newID']), $_POST['newFirstName'], $_POST['newSecondName'], $_POST['newCity']);
     }
     ?>
   </div>

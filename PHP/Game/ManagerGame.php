@@ -43,6 +43,15 @@ class ManagerGame extends DBManager
       exit();
     }
   }
+
+  public function edit($gameID, $newGameName, $newGameStation, $newGameFormat)
+  {
+    $request = 'UPDATE `game` SET `name` = ? , `station` = ?, `format` = ? WHERE id = ' . $gameID;
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([$newGameName, $newGameStation, $newGameFormat]);
+    header('Location:index.php');
+    exit();
+  }
 }
 
 ?>

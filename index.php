@@ -60,37 +60,66 @@ if (isset($_GET['delete'])) {
 
       </tbody>
     </table>
-    <form action="./index.php" method="POST">
-      <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-      </div>
-      <div>
-        <label for="station">Station:</label>
-        <select name="station" id="station">
+    <div>
 
-          <option value="PC">PC</option>
-          <option value="Xbox One">Xbox One</option>
-          <option value="PlayStation 4">PlayStation 4 </option>
-          <option value="PlayStation 5">PlayStation 5 </option>
-          <option value="Xbox Series">Xbox Series </option>
-          <option value="Switch">Switch </option>
-        </select>
-      </div>
-      <div>
-        <label for="format">Format:</label>
-        <select name="format" id="format">
-          <option value="MOBA">MOBA</option>
-          <option value="FPS">FPS</option>
-          <option value="Battle Royale">Battle Royale</option>
-          <option value="Jeu de cartes à collectionner">Jeu de cartes à collectionner</option>
-          <option value="Sport">Sport</option>
-          <option value="FPS tactique">FPS tactique</option>
-          <option value="Combat">Combat</option>
-        </select>
-      </div>
-      <input type="submit" value="ADD">
-    </form>
+      <form action="./index.php" method="POST">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name">
+        </div>
+        <div>
+          <label for="station">Station:</label>
+          <select name="station" id="station">
+
+            <option value="PC">PC</option>
+            <option value="Xbox One">Xbox One</option>
+            <option value="PlayStation 4">PlayStation 4 </option>
+            <option value="PlayStation 5">PlayStation 5 </option>
+            <option value="Xbox Series">Xbox Series </option>
+            <option value="Switch">Switch </option>
+          </select>
+        </div>
+        <div>
+          <label for="format">Format:</label>
+          <select name="format" id="format">
+            <option value="MOBA">MOBA</option>
+            <option value="FPS">FPS</option>
+            <option value="Battle Royale">Battle Royale</option>
+            <option value="Jeu de cartes à collectionner">Jeu de cartes à collectionner</option>
+            <option value="Sport">Sport</option>
+            <option value="FPS tactique">FPS tactique</option>
+            <option value="Combat">Combat</option>
+          </select>
+        </div>
+        <input type="submit" value="ADD">
+      </form>
+
+      <form action="./index.php" method="post">
+        <div>
+          <label for="newGameID">Edit:</label>
+          <select name="newGameID" id="newGameID">
+            <?php
+            foreach ($allGames as $game) {
+              echo ('<option value="' . $game->getID() . '">' . $game->getName() . '</option>');
+            }
+            ?>
+          </select>
+        </div>
+        <div>
+          <label for="newGameName">new Name:</label>
+          <input type="text" name="newGameName" id="newGameName">
+        </div>
+        <div>
+          <label for="newGameStation">new Station:</label>
+          <input type="text" name="newGameStation" id="newGameStation">
+        </div>
+        <div>
+          <label for="newGameFormat">new Format:</label>
+          <input type="text" name="newGameFormat" id="newGameFormat">
+        </div>
+        <input type="submit" value="EDIT">
+      </form>
+    </div>
     <?php
     if (!empty($_POST['name']) && isset($_POST['station']) && isset($_POST['format'])) {
       $newGame = new Game();
@@ -98,6 +127,9 @@ if (isset($_GET['delete'])) {
       $newGame->setStation($_POST['station']);
       $newGame->setFormat($_POST['format']);
       $managerGame->create($newGame);
+    }
+    if (!empty($_POST['newGameName'])) {
+      $managerGame->edit(intval($_POST['newGameID']), $_POST['newGameName'], $_POST['newGameStation'], $_POST['newGameFormat']);
     }
     ?>
   </div>

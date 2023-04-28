@@ -44,11 +44,9 @@ class ManagerSponsor extends DBManager
 
   public function edit($sponsorID, $newBrand, $teamID)
   {
-    // $request = 'UPDATE `sponsor` SET `brand` = ' . $newBrand . ', `team_id` = ' . $teamID . ' WHERE id = ' . $sponsorID . '';
     $request = 'UPDATE `sponsor` SET `brand` = ? , `team_id` = ? WHERE id = ' . $sponsorID;
     $query = $this->getConnexion()->prepare($request);
     $query->execute([$newBrand, $teamID]);
-    // var_dump($query);
     header('Location:SponsorsSection.php');
     exit();
   }

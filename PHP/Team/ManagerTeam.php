@@ -41,6 +41,15 @@ class ManagerTeam extends DBManager
     header('Location:TeamSection.php');
     exit();
   }
+
+  public function edit($teamID, $teamName, $teamDescription)
+  {
+    $request = 'UPDATE `team` SET `name` = ? , `description` = ? WHERE id = ' . $teamID;
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([$teamName, $teamDescription]);
+    header('Location:TeamSection.php');
+    exit();
+  }
 }
 
 

@@ -45,6 +45,15 @@ class ManagerPlayer extends DBManager
     exit();
 
   }
+
+  public function edit($playerID, $newFirstName, $newSecondName, $newCity)
+  {
+    $request = 'UPDATE `player` SET `first_name` = ? , `second_name` = ?, `city` = ? WHERE id = ' . $playerID;
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([$newFirstName, $newSecondName, $newCity]);
+    header('Location:PlayerSection.php');
+    exit();
+  }
 }
 
 ?>
