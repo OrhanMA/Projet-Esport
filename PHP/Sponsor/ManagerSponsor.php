@@ -32,6 +32,24 @@ class ManagerSponsor extends DBManager
     ]);
     header('Refresh:0');
   }
+
+  public function delete($sponsorID)
+  {
+    $request = 'DELETE FROM sponsor WHERE id = ' . $sponsorID;
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute();
+    header('Location:SponsorsSection.php');
+    exit();
+  }
+
+  public function edit($sponsorID, $newBrand, $teamID)
+  {
+    $request = 'UPDATE `sponsor` SET `brand` = ' . $newBrand . ', `team_id` = ' . $teamID . ' WHERE id = ' . $sponsorID . '';
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute();
+    header('Location:SponsorsSection.php');
+    exit();
+  }
 }
 
 ?>

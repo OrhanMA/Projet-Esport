@@ -18,6 +18,20 @@ $managerSponsor = new ManagerSponsor();
 $allSponsors = $managerSponsor->getAll();
 
 
+require '../Team/ManagerTeam.php';
+
+$managerTeam = new ManagerTeam();
+$allTeams = $managerTeam->getAll();
+
+if (isset($_GET['delete'])) {
+  $managerSponsor->delete(intval($_GET['delete']));
+}
+
+// if (isset($_GET['edit'])) {
+//   $managerSponsor->edit(intval($_GET['delete']));
+// }
+
+
 ?>
 
 <body>
@@ -43,10 +57,18 @@ $allSponsors = $managerSponsor->getAll();
       <tbody>
         <?php
         foreach ($allSponsors as $sponsor) {
+          $removeUrl = '?delete=' . $sponsor->getID();
+          $removeLink = '<a href="' . $removeUrl . '">Delete</a>';
+
+          // $editUrl = '?edit=' . $sponsor->getID();
+          // $removeLink = '<a href="' . $editUrl . '">Edit</a>';
+        
           echo ('<tr>');
           echo ('<td>' . $sponsor->getID() . '</td>');
           echo ('<td>' . $sponsor->getBrand() . '</td>');
           echo ('<td>' . $sponsor->getTeamID() . '</td>');
+          echo ('<td>' . $removeLink . '</td>');
+          // echo ('<td>' . $editLink . '</td>');
           echo ('</tr>');
         }
         ?>
