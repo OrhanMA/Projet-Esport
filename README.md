@@ -1,5 +1,11 @@
 # Simplon - Projet Esport
 
+## Setup
+
+- Télécharger MAMP
+- Lancer le projet dans votre local host
+- Préciser la BDD mySQL à laquelle se connecter
+
 ## Contexte
 
 Votre MVP (produit minimum viable) pour le projet Netflix like à convaincu vos responsables et les clients, bien joué !
