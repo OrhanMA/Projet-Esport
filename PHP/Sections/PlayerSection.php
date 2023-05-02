@@ -59,7 +59,7 @@ if (isset($_GET['delete'])) {
           echo ('<td>' . $player->getFirstName() . '</td>');
           echo ('<td>' . $player->getSecondName() . '</td>');
           echo ('<td>' . $player->getCity() . '</td>');
-          echo ('<td>' . $removeLink . '</td>');
+          echo ('<td class="deleteBtn">' . $removeLink . '</td>');
           echo ('</tr>');
         }
         ?>

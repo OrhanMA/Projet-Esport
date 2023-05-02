@@ -53,7 +53,7 @@ if (isset($_GET['delete'])) {
           echo ('<td>' . $game->getName() . '</td>');
           echo ('<td>' . $game->getStation() . '</td>');
           echo ('<td>' . $game->getFormat() . '</td>');
-          echo ('<td>' . $removeLink . '</td>');
+          echo ('<td class="deleteBtn">' . $removeLink . '</td>');
           echo ('</tr>');
         }
         ?>

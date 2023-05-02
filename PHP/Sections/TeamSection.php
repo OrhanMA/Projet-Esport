@@ -54,7 +54,7 @@ if (isset($_GET['delete'])) {
                     echo ('<td>' . $team->getId() . '</td>');
                     echo ('<td>' . $team->getName() . '</td>');
                     echo ('<td>' . $team->getDescription() . '</td>');
-                    echo ('<td>' . $removeLink . '</td>');
+                    echo ('<td  class="deleteBtn">' . $removeLink . '</td>');
                     echo ('</tr>');
                 }
                 ?>

@@ -67,7 +67,7 @@ if (isset($_GET['delete'])) {
           echo ('<td>' . $sponsor->getID() . '</td>');
           echo ('<td>' . $sponsor->getBrand() . '</td>');
           echo ('<td>' . $sponsor->getTeamID() . '</td>');
-          echo ('<td>' . $removeLink . '</td>');
+          echo ('<td class="deleteBtn">' . $removeLink . '</td>');
           // echo ('<td>' . $editLink . '</td>');
           echo ('</tr>');
         }

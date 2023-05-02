@@ -49,7 +49,7 @@ if (!empty($_POST['newname'])) {
     </nav>
     <div class="manager">
 
-        <table class="table">
+        <table class="table" style="overflow-x:scroll">
             <thead id="top-tr">
                 <tr>
                     <th>ID</th>
@@ -74,7 +74,7 @@ if (!empty($_POST['newname'])) {
                     echo ('<td>' . $competition->getCity() . '</td>');
                     echo ('<td>' . $competition->getFormat() . '</td>');
                     echo ('<td>' . $competition->getCashPrize() . '</td>');
-                    echo ('<td>' . $removeLink . '</td>');
+                    echo ('<td class="deleteBtn">' . $removeLink . '</td>');
                     echo ('</tr>');
                 }
                 ?>
